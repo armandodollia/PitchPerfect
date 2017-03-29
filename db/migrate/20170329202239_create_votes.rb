@@ -5,7 +5,7 @@ class CreateVotes < ActiveRecord::Migration[5.0]
       t.integer :day_id, null: false
       t.integer :pitch_id, null: false
       t.integer :round_id, null: false
-      t.integer :points
+      t.integer :points, default: 0
 
       t.timestamps null: false
     end
