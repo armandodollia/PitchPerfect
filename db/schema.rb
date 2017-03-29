@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20170329202914) do
 
   create_table "votes", force: :cascade do |t|
     t.integer  "voter_id",               null: false
-    t.integer  "day_id",                 null: false
     t.integer  "pitch_id",               null: false
     t.integer  "round_id",               null: false
     t.integer  "points",     default: 0
