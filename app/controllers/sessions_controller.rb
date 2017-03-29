@@ -6,11 +6,12 @@ class SessionsController < ApplicationController
       redirect_to 'days#index'
     else
       @errors = ["Invalid email/password combination"]
-      render 'users/new'
+      render '/users/new'
     end
   end
 
   def destroy
-
+    session.delete(:user_id)
+    redirect_to "/users/new"
   end
 end
