@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170329202914) do
     t.string   "email",                           null: false
     t.boolean  "is_admin",        default: false
     t.string   "password_digest"
-    t.integer  "team_id"
+    t.integer  "team_id",         default: 0
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
