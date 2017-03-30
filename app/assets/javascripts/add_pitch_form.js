@@ -9,16 +9,10 @@ $(document).ready(function () {
   $('#new_pitch').on('submit', '.btn', function (event) {
     var $form = $(this)
     event.preventDefault();
-
-
-    var call = $form.click(function(event){
-      event.preventDefault()
       $.ajax({
         url: $form.attr('action'),
         method: $form.attr('method'),
         data: $form.serialize()
       });
-
-    });
   });
 });
