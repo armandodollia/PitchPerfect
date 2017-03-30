@@ -1,0 +1,53 @@
+<h1>Add Another Day</h1>
+
+  <div class="row">
+  	 <% if @errors %>
+        <ul>
+          <% @errors.each do |error| %>
+              <li><%= error %></li>
+          <% end %>
+        </ul>
+    <% end %>
+      <div class="card-panel">
+        <%= form_for :day, class: 'col s12', url: '/days' do |f| %>
+            <div class="row">
+              <div class="input-field col s6">
+                <%= f.text_field :cohort_name,class: 'validate' %><br>
+                <%= f.label :cohort_name %>
+              </div>
+              <div class="input-field col s6">
+                <%= f.text_field :pic_url, class: 'validate' %><br>
+                <%= f.label :pic_url %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.text_field :round_status, class: 'validate' %>
+                <%= f.label :round_status %><br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.text_field :passing_number, class: 'validate' %>
+                <%= f.label :passing_number %><br>
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12">
+                <%= f.text_field :teams_total, class: 'validate' %>
+                <%= f.label :teams_total %><br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.text_field :date, class: 'validate' %>
+                <%= f.label :date %><br>
+              </div>
+            </div>
+            <div class="row">
+              <%= f.submit 'Register', class: 'btn waves-effect waves-light right' %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

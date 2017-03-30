@@ -1,4 +1,7 @@
 <h1>Past to Present Pitch Days</h1>
+<% if admin? %>
+	<%= link_to "Add a new day", new_day_path %>
+<% end %>
 
 <ul>
   <% @days.each do |day| %>
