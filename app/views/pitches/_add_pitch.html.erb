@@ -1,8 +1,7 @@
 <div class="row">
   <div class="col s6 offset-s3">
-    <div id="new_pitch_form" class="card-panel col s12 hide">
-      <!--TODO Change to dynamic path-->
-      <%= form_for [day, pitch], class: 'col s12' do |f| %>
+    <div class="card-panel col s12 hide" id="add_pitch_form_container">
+      <%= form_for [day, pitch], class: 'col s12', remote: true do |f| %>
           <div class="row">
             <div class="input-field col s12">
               <%= f.text_field :title, id: 'new_pitch-title', class: 'validate' %><br>

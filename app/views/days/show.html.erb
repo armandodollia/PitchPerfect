@@ -3,20 +3,16 @@
     <% if @pitches.empty? %>
         <h3>Please add a pitch</h3>
     <% elsif @day.round_status == 'open' %>
-      <ul>
+      <ul class="pitch-list">
         <% @pitches.each do |pitch| %>
-          <li class="proj">
-            <%= pitch.title %><br>
-            - <%= pitch.blurb %> -<br>
-          </li>
+            <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
         <% end %>
       </ul>
     <% elsif @day.round_status == 'round_1' %>
-      <ul>
+      <ul class="pitch-list">
         <% @pitches.each do |pitch| %>
-          <li class="proj">
-            <%= pitch.title %><br>
-            - <%= pitch.blurb %> -<br>
+            <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
+            <li>
             <span>- Rank -</span><br>
             <%= form_for pitch, url: votes_path(pitch) do |f| %>
               <% @pitches.count.times do |i| %>
@@ -33,10 +29,10 @@
     <% end %>
     <div class="row">
       <div class="center-align">
-        <a class="waves-effect waves-light btn-large center" id="show_pitch_form">Make a Pitch</a>
+        <a class="waves-effect waves-light btn-large center" id="show_pitch_form_button">Make a Pitch</a>
       </div>
     </div>
-    <div class="row" id="add_pitch_form_container">
+    <div class="row">
       <div class="center-align">
         <%= render partial: '/pitches/add_pitch', locals: {day: @day, pitch: @pitch} %>
       </div>
