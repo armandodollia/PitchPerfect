@@ -1,5 +1,17 @@
-<% if @pitches %>
-    <%	@pitches.each do |pitch| %>
-        <h3><%= pitch.title %></h3>
+<% if @pitches.empty? %>
+  <%= link_to "Add the First Pitch!", new_pitch_path %>
+<% else %>
+  <ul>
+    <% @pitches.each do |pitch| %>
+      <li class="proj">
+        <%= pitch.title %><br>
+        <%= form_for pitch, url: pitch_votes_path(pitch) do |f| %>
+          <% @pitches.count.times do |i| %>
+            <%= radio_button_tag(:vote, "vote#{i + 1}") %>
+            <%= label_tag(:vote, "#{i + 1}") %>
+          <% end %>
+        <% end %>
+      </li>
     <% end %>
+  </ul>
 <% end %>
