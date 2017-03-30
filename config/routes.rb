@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'users#new'
   resources :users, only: [:new, :create]
   resources :sessions, only: [:create, :destroy]
-  resources :days, only: [:index, :show]
-  resources :pitches, only: [:new] do
-    resources :votes
+  resources :days, only: [:index, :show] do
+    resources :votes, only: [:create]
   end
+  resources :pitches, only: [:new]
 end
