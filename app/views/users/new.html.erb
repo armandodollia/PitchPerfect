@@ -1,10 +1,6 @@
-
-<!-- TODO remove this loggged_in? her for testing -->
-<% if logged_in? %>
-  <h1>your logged in</h1>
-<% end %>
 <div class="user-container">
   <h2>Temp register</h2>
+
   <div id="register">
     <% if @errors %>
       <ul>
@@ -13,20 +9,40 @@
       <% end %>
       </ul>
     <% end %>
-    <%= form_for :user, url: '/users' do |f| %>
-      <%= f.label :first_name %><br>
-      <%= f.text_field :first_name %><br>
-      <%= f.label :last_name %><br>
-      <%= f.text_field :last_name %><br>
-      <%= f.label :email %><br>
-      <%= f.text_field :email %><br>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %><br>
-      <%= f.submit %>
-    <% end %>
+
+    <div class="row">
+      <%= form_for :user, class: 'col s12', url: '/users' do |f| %>
+          <div class="row">
+            <div class="input-field col s6">
+              <%= f.text_field :first_name, id: 'first_name', class: 'validate' %><br>
+              <%= f.label :first_name %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.text_field :last_name, id: 'last_name', class: 'validate' %><br>
+              <%= f.label :last_name %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :email, class: 'validate' %>
+              <%= f.label :email %><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.password_field :password, class: 'validate' %>
+              <%= f.label :password %><br>
+            </div>
+          </div>
+          <div class="row">
+            <%= f.submit 'Register', class: 'btn waves-effect waves-light right' %>
+          </div>
+      <% end %>
+    </div>
   </div>
 
   <h2>Temp login</h2>
+
   <div id="login">
     <% if @errors %>
       <ul>
@@ -35,13 +51,25 @@
       <% end %>
       </ul>
     <% end %>
-    <%= form_for :session, url: '/sessions' do |f| %>
-      <%= f.label :email %><br>
-      <%= f.text_field :email %><br>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %><br>
-      <%= f.submit %>
-    <% end %>
+    <div class="row">
+      <%= form_for :session, class: 'col s12', url: '/sessions' do |f| %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :email, class: 'validate' %>
+              <%= f.label :email %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.password_field :password, class: 'validate' %>
+              <%= f.label :password %>
+            </div>
+          </div>
+          <div class="row">
+            <%= f.submit 'Login', class: 'btn waves-effect waves-light right'%>
+          </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
