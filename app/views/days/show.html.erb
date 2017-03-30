@@ -26,6 +26,21 @@
     <% end %>
   </ul>
 <% elsif @day.round_status == 'round_2' %>
-  <p><%= round_1_winners(@pitches, @day) %></p>
+  <% winners = round_1_winners(@pitches, @day) %>
+  <ul>
+    <% winners.each do |pitch| %>
+      <li class="proj">
+        <%= pitch.title %><br>
+        - <%= pitch.blurb %> -<br>
+        <span>- Rank -</span><br>
+        <%= form_for pitch, url: pitch_votes_path(pitch) do |f| %>
+          <% winners.count.times do |i| %>
+            <%= radio_button_tag(:vote, "vote#{i + 1}") %>
+            <%= label_tag(:vote, "#{i + 1}") %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 <% else %>
 <% end %>
