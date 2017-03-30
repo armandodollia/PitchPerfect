@@ -1,1 +1,12 @@
-<h1>Test</h1>
+<h1>Past to Present Pitch Days</h1>
+
+<ul>
+  <% @days.each do |day| %>
+    <li class="proj">
+      <span><%= day.cohort_name %></span><br>
+      <span><%= day.date %></span><br>
+      <%= link_to <img src=<%= day.pic_url %>>, day_path(day) %>
+      <img src=<%= day.pic_url %>>
+    </li>
+  <% end %>
+</ul>
