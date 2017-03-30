@@ -12,6 +12,7 @@
 <% elsif @day.round_status == 'round_1' %>
   <ul>
     <form class="vote-form" action="<%= day_votes_path(@day) %>" method="POST">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <% @pitches.each do |pitch| %>
       <li class="proj">
         <%= pitch.title %><br>
@@ -19,6 +20,7 @@
         <span>- Rank -</span><br>
           <% @pitches.count.times do |i| %>
             <span>
+
               <input name="<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" />
               <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
             </span>
@@ -40,6 +42,7 @@
         <form class="vote-form" action="<%= pitch_votes_path(pitch) %>" method="POST">
           <% winners.count.times do |i| %>
             <span>
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
               <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
               <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
             </span>
