@@ -36,7 +36,7 @@
         - <%= pitch.blurb %> -<br>
         <span>- Rank -</span><br>
         <form action="/" method="POST">
-          <% @pitches.count.times do |i| %>
+          <% winners.count.times do |i| %>
             <span>
               <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
               <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
