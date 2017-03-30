@@ -1,8 +1,13 @@
 class DaysController < ApplicationController
+
   def index
+    @days = Day.all
   end
-  
+
   def show
-    @pitches = current_day(params[:id]).try(:pitches)
+    @day = Day.find_by(id: params[:id])
+    @pitches = Pitch.all.where(day_id: @day.id)
   end
+
 end
+

@@ -14,7 +14,7 @@ end
 
 50.times do
   Day.create!(cohort_name: Faker::Beer.name,
-              pic_url: 'http://weknowyourdreams.com/image.php?pic=/images/fox/fox-04.jpg',
+              pic_url: 'http://www.alaska-bear-viewing.net/image_support/images/fox_hyde_small.jpg',
               round_status: ROUND_STATUS.sample, date: rand(DateTime.parse('2015-07-21')..DateTime.now),
               passing_number: rand(2..4), teams_total: rand(6))
 end
