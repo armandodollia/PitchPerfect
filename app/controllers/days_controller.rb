@@ -5,7 +5,8 @@ class DaysController < ApplicationController
   end
 
   def show
-    @pitches = Pitch.all.where(day_id: params[:id])
+    @day = Day.find_by(id: params[:id])
+    @pitches = Pitch.all.where(day_id: @day.id)
   end
 
 end

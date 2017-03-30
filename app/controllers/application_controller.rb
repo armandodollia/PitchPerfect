@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include PitchesHelper
   protect_from_forgery with: :exception
 
   helper_method :logged_in?, :current_user, :admin?

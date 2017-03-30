@@ -5,6 +5,7 @@
     <li class="proj">
       <span><%= day.cohort_name %></span><br>
       <span><%= day.date %></span><br>
+      <span><%= day.round_status %></span><br>
       <%= link_to image_tag(day.pic_url), day_path(day) %>
     </li>
   <% end %>
