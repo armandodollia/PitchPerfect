@@ -3,8 +3,6 @@ class AdminsController < ApplicationController
 	end
 
 	def create
-		p params
-		puts "*" * 30
 		admin = User.new(user_params)
 		admin.is_admin = true
 		if admin.save
