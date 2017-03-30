@@ -20,7 +20,7 @@
         <span>- Rank -</span><br>
           <% @pitches.count.times do |i| %>
             <span>
-              <input name="<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" />
+              <input name="row-<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>" />
               <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
             </span>
           <% end %>
@@ -42,7 +42,7 @@
           <% winners.count.times do |i| %>
             <span>
               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-              <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
+              <input name="row-<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>"/>
               <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
             </span>
           <% end %>
