@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <nav>
+      <h1><%= link_to 'PitchPerfect', root_path%></h1>
+      <%= link_to 'home', root_path %>
+
+      <% if logged_in? %>
+        <%= link_to 'logout', session_path(current_user), method: :delete %>
+          <% if admin? %>
+              <!--TODO make adding admin page-->
+            <%= link_to 'add admin', root_path %>
+          <% end %>
+      <% else %>
+        <%= link_to 'login', root_path %>
+        <%= link_to 'register', root_path %>
+      <% end %>
+
+
+    </nav>
     <%= yield %>
   </body>
 </html>
