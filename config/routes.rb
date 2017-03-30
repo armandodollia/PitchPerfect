@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :pitches, only: [:new] do
     resources :votes
   end
+  # TODO restrict path once I get everything working
+  resources :admins
 end
