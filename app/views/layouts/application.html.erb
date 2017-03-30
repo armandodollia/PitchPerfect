@@ -19,8 +19,7 @@
             <% if logged_in? %>
               <li><%= link_to 'logout', session_path(current_user), method: :delete %></li>
                 <% if admin? %>
-                    <!--TODO make adding admin page-->
-                  <li><%= link_to 'add admin', root_path %></li>
+                  <li><%= link_to 'add admin', new_admin_path %></li>
                 <% end %>
             <% else %>
               <li><%= link_to 'login', root_path %></li>
