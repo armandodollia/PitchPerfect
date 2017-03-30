@@ -13,20 +13,49 @@
         <% @pitches.each do |pitch| %>
             <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
             <li>
-            <span>- Rank -</span><br>
-            <%= form_for pitch, url: votes_path(pitch) do |f| %>
-              <% @pitches.count.times do |i| %>
-                <%= radio_button_tag(:vote, "vote#{i + 1}") %>
-                <%= label_tag(:vote, "#{i + 1}") %>
-              <% end %>
-            <% end %>
+              <span>- Rank -</span><br>
+              <form action="/" method="POST">
+                  <% @pitches.count.times do |i| %>
+                    <span>
+                      <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
+                      <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
+                    </span>
+                <% end %>
+              </form>
           </li>
         <% end %>
       </ul>
-    <% elsif @day.round_status == 'round_2' %>
-      <p><%= @pitches.round_1_winners %></p>
-    <% else %>
-    <% end %>
+        <% elsif @day.round_status == 'round_2' %>
+            <% winners = round_1_winners(@pitches, @day) %>
+            <ul>
+              <% winners.each do |pitch| %>
+                  <li class="proj">
+                    <%= pitch.title %><br>
+                    - <%= pitch.blurb %> -<br>
+                    <span>- Rank -</span><br>
+                    <form action="/" method="POST">
+                      <% winners.count.times do |i| %>
+                <span>
+                  <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
+                  <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
+                </span>
+                      <% end %>
+                    </form>
+                  </li>
+              <% end %>
+            </ul>
+        <% else %>
+            <% champs = round_2_winners(round_1_winners(@pitches, @day), @day) %>
+            <ul>
+              <% champs.each do |pitch| %>
+                  <li class="proj">
+                    <%= pitch.title %><br>
+                    - <%= pitch.blurb %> -<br>
+                    <span>- Rank -</span><br>
+                  </li>
+              <% end %>
+            </ul>
+        <% end %>
     <div class="row">
       <div class="center-align">
         <a class="waves-effect waves-light btn-large center" id="show_pitch_form_button">Make a Pitch</a>

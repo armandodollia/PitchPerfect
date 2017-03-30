@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :days, only: [:index, :show] do
       resources :pitches, only: [:create]
   end
+  # TODO restrict path once I get everything working
+  resources :admins
 end
