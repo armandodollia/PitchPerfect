@@ -26,6 +26,6 @@
     <% end %>
   </ul>
 <% elsif @day.round_status == 'round_2' %>
-  <p><%= @pitches.round_1_winners %></p>
+  <p><%= round_1_winners(@pitches, @day) %></p>
 <% else %>
 <% end %>
