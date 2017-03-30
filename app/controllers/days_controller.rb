@@ -4,4 +4,9 @@ class DaysController < ApplicationController
     @days = Day.all
   end
 
+  def show
+    @pitches = current_day(params[:id]).try(:pitches)
+  end
+
 end
+
