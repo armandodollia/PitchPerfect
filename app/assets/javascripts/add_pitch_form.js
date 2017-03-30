@@ -6,8 +6,8 @@ $(document).ready(function () {
 
   });
 
-  $('#new_pitch_form').on('click', '.btn', function (event) {
-    event.preventDefault();
+  $('#new_pitch_form').on('submit', '.btn', function (event) {
+    // event.preventDefault();
     $('#new_pitch_form').addClass('hide');
     $('#show_pitch_form').removeClass('hide');
   });
