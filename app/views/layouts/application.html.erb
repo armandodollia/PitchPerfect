@@ -6,26 +6,32 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <nav>
-      <h1><%= link_to 'PitchPerfect', root_path%></h1>
-      <%= link_to 'home', root_path %>
+    <div class="container">
+      <nav>
+        <div class="nav-wrapper">
+          <%= link_to 'PitchPerfect', root_path, class: 'brand-logo' %>
+          <ul id="nav-mobile" class="right">
+            <li><%= link_to 'home', root_path %></li>
+            <% if logged_in? %>
+              <li><%= link_to 'logout', session_path(current_user), method: :delete %></li>
+                <% if admin? %>
+                    <!--TODO make adding admin page-->
+                  <li><%= link_to 'add admin', root_path %></li>
+                <% end %>
+            <% else %>
+              <li><%= link_to 'login', root_path %></li>
+              <li><%= link_to 'register', root_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
 
-      <% if logged_in? %>
-        <%= link_to 'logout', session_path(current_user), method: :delete %>
-          <% if admin? %>
-              <!--TODO make adding admin page-->
-            <%= link_to 'add admin', root_path %>
-          <% end %>
-      <% else %>
-        <%= link_to 'login', root_path %>
-        <%= link_to 'register', root_path %>
-      <% end %>
+      <%= yield %>
 
-
-    </nav>
-    <%= yield %>
+    </div>
   </body>
 </html>
