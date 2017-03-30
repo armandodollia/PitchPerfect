@@ -20,7 +20,6 @@
         <span>- Rank -</span><br>
           <% @pitches.count.times do |i| %>
             <span>
-
               <input name="<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" />
               <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
             </span>
