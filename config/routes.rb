@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root 'users#new'
   resources :users, only: [:new, :create]
   resources :sessions, only: [:create, :destroy]
+
   resources :days, only: [:index, :show, :create, :new]
-  resources :pitches, only: [:new] do
+  resources :pitches, only: [:create] do
     resources :votes
   end
   # TODO restrict path once I get everything working
