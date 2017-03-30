@@ -44,6 +44,7 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'pry-rails'
+  gem 'launchy'
 end
 
 group :development do
