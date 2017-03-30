@@ -1,5 +1,6 @@
 class DaysController < ApplicationController
 	def new
+		redirect_to days_path unless admin?
 	end
   def index
     @days = Day.all
@@ -12,8 +13,8 @@ class DaysController < ApplicationController
   end
 
   def create
-  	p params
-  	puts "*" * 30
+  	redirect_to days_path unless admin?
+  	
   	day = Day.new(days_params)
   	if day.save
   		redirect_to days_path
