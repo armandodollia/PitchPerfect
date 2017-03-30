@@ -43,4 +43,14 @@
     <% end %>
   </ul>
 <% else %>
+  <% champs = round_2_winners(round_1_winners(@pitches, @day), @day) %>
+  <ul>
+    <% champs.each do |pitch| %>
+      <li class="proj">
+        <%= pitch.title %><br>
+        - <%= pitch.blurb %> -<br>
+        <span>- Rank -</span><br>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
