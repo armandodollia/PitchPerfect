@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col s6 offset-s3">
+    <div class="card-panel col s12 hide" id="add_pitch_form_container">
+      <%= form_for [day, pitch], class: 'col s12', remote: true do |f| %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :title, id: 'new_pitch-title', class: 'validate' %><br>
+              <%= f.label :title %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_area :blurb, id: 'new_pitch-blurb', class: 'materialize-textarea' %><br>
+              <%= f.label :blurb %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_area :tech_stack, id: 'new_tech_stack', class: 'materialize-textarea' %>
+              <%= f.label :tech_stack %><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s6">
+              <div class="col s3 offset-s9">
+                <%= f.submit 'Submit', class: 'btn waves-effect waves-light center' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
