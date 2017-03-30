@@ -10,52 +10,54 @@
       </ul>
     <% elsif @day.round_status == 'round_1' %>
       <ul class="pitch-list">
+        <form class="vote-form" action="<%= day_votes_path(@day) %>" method="POST">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <% @pitches.each do |pitch| %>
             <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
             <li>
               <span>- Rank -</span><br>
-              <form action="/" method="POST">
-                  <% @pitches.count.times do |i| %>
-                    <span>
-                      <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
-                      <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
-                    </span>
-                <% end %>
-              </form>
-          </li>
-        <% end %>
-      </ul>
-        <% elsif @day.round_status == 'round_2' %>
-            <% winners = round_1_winners(@pitches, @day) %>
-            <ul>
-              <% winners.each do |pitch| %>
-                  <li class="proj">
-                    <%= pitch.title %><br>
-                    - <%= pitch.blurb %> -<br>
-                    <span>- Rank -</span><br>
-                    <form action="/" method="POST">
-                      <% winners.count.times do |i| %>
+              <% @pitches.count.times do |i| %>
                 <span>
-                  <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
+                  <input name="row-<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>" />
                   <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
                 </span>
-                      <% end %>
-                    </form>
-                  </li>
               <% end %>
-            </ul>
-        <% else %>
-            <% champs = round_2_winners(round_1_winners(@pitches, @day), @day) %>
-            <ul>
-              <% champs.each do |pitch| %>
-                  <li class="proj">
-                    <%= pitch.title %><br>
-                    - <%= pitch.blurb %> -<br>
-                    <span>- Rank -</span><br>
-                  </li>
-              <% end %>
-            </ul>
+            </li>
         <% end %>
+        <input class="mass-submit"type="submit" value="Submit">
+        </form>
+      </ul>
+    <% elsif @day.round_status == 'round_2' %>
+      <% winners = round_1_winners(@pitches, @day) %>
+      <ul class="pitch-list">
+        <form class="vote-form" action="<%= day_votes_path(@day) %>" method="POST">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <% winners.each do |pitch| %>
+            <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
+            <li>
+              <span>- Rank -</span><br>
+              <% winners.count.times do |i| %>
+                <span>
+                  <input name="row-<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>" />
+                  <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
+                </span>
+              <% end %>
+            </li>
+        <% end %>
+        <input class="mass-submit"type="submit" value="Submit">
+        </form>
+      </ul>
+    <% else %>
+        <% champs = round_2_winners(round_1_winners(@pitches, @day), @day) %>
+          <ul>
+            <% champs.each do |pitch| %>
+                <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
+                <li>
+                  <span>- Rank -</span><br>
+                </li>
+            <% end %>
+          </ul>
+      <% end %>
     <div class="row">
       <div class="center-align">
         <a class="waves-effect waves-light btn-large center" id="show_pitch_form_button">Make a Pitch</a>
