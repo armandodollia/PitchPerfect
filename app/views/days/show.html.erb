@@ -16,12 +16,14 @@
         <%= pitch.title %><br>
         - <%= pitch.blurb %> -<br>
         <span>- Rank -</span><br>
-        <%= form_for pitch, url: pitch_votes_path(pitch) do |f| %>
+        <form action="/" method="POST">
           <% @pitches.count.times do |i| %>
-            <%= radio_button_tag(:vote, "vote#{i + 1}") %>
-            <%= label_tag(:vote, "#{i + 1}") %>
+            <span>
+              <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
+              <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
+            </span>
           <% end %>
-        <% end %>
+        </form>
       </li>
     <% end %>
   </ul>
@@ -33,12 +35,14 @@
         <%= pitch.title %><br>
         - <%= pitch.blurb %> -<br>
         <span>- Rank -</span><br>
-        <%= form_for pitch, url: pitch_votes_path(pitch) do |f| %>
-          <% winners.count.times do |i| %>
-            <%= radio_button_tag(:vote, "vote#{i + 1}") %>
-            <%= label_tag(:vote, "#{i + 1}") %>
+        <form action="/" method="POST">
+          <% @pitches.count.times do |i| %>
+            <span>
+              <input name="<%= pitch.id %>" type="radio" id="<%= pitch.id %>-<%= i %>" />
+              <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
+            </span>
           <% end %>
-        <% end %>
+        </form>
       </li>
     <% end %>
   </ul>
