@@ -1,4 +1,4 @@
-<% if @pitch.errors.empty? %>
+<% if @pitch.errors.empty? || @pitch.errors %>
   $('.pitch-list').append("<%= j render(@pitch) %>");
   $('#new_pitch').trigger('reset');
   $('#add_pitch_form_container').addClass('hide');
