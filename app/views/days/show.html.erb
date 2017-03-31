@@ -37,6 +37,7 @@
         <form class="vote-form" action="<%= day_votes_path(@day) %>" method="POST">
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <% winners.each do |pitch| %>
+            <!-- <p><%= pitch %></p> -->
             <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
             <li>
               <span>- Rank -</span><br>

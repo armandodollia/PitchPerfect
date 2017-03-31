@@ -12,10 +12,11 @@ class VotesController < ApplicationController
     params[:vote][:voter_id] = current_user.id
     pitch_count = day.pitches.count
     params.each do |key, value|
-      if key.to_s.to_i > 0
-        params[:vote][:pitch_id] = key
+      if key.to_s[-1].to_i > 0
+        params[:vote][:pitch_id] = key.to_s[-1].to_i
         params[:vote][:points] = pitch_count - value.to_s.to_i
-        day.rounds.find_by(round_number: current_round).votes.new(vote_params).save
+        new_vote = day.rounds.find_by(round_number: current_round).votes.new(vote_params)
+        new_vote.save
       end
     end
     redirect_to '/days'
