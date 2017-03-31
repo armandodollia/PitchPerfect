@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+  before_action :require_login
+
   def create
     params[:vote] = Hash.new
     day = Day.find_by(id: params[:day_id])
@@ -16,6 +18,7 @@ class VotesController < ApplicationController
         day.rounds.find_by(round_number: current_round).votes.new(vote_params).save
       end
     end
+    redirect_to '/days'
   end
 
   private

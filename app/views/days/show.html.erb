@@ -16,11 +16,15 @@
             <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
             <li>
               <span>- Rank -</span><br>
-              <% @pitches.count.times do |i| %>
-                <span>
-                  <input name="row-<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>" />
-                  <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
-                </span>
+              <% if voted?(@day, 1) %>
+                <span>Thanks for Voting Friend!</span>
+              <% else %>
+                <% @pitches.count.times do |i| %>
+                  <span>
+                    <input name="row-<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>" />
+                    <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
+                  </span>
+                <% end %>
               <% end %>
             </li>
         <% end %>
@@ -36,11 +40,15 @@
             <%= render partial: '/pitches/pitch', locals: {pitch: pitch} %>
             <li>
               <span>- Rank -</span><br>
-              <% winners.count.times do |i| %>
-                <span>
-                  <input name="row-<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>" />
-                  <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
-                </span>
+              <% if voted?(@day, 2) %>
+                <span>Thanks for Voting Friend!</span>
+              <% else %>
+                <% winners.count.times do |i| %>
+                  <span>
+                    <input name="row-<%= pitch.id %>" type="radio" value="<%= i %>" id="<%= pitch.id %>-<%= i %>" data-col="<%= i %>" />
+                    <label for="<%= pitch.id %>-<%= i %>"> <%= i + 1 %> </label>
+                  </span>
+                <% end %>
               <% end %>
             </li>
         <% end %>

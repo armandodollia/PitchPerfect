@@ -1,7 +1,10 @@
 class DaysController < ApplicationController
-	def new
+	before_action :require_login
+
+  def new
 		redirect_to days_path unless admin?
 	end
+
   def index
     @days = Day.all
   end
@@ -14,7 +17,7 @@ class DaysController < ApplicationController
 
   def create
   	redirect_to days_path unless admin?
-  	
+
   	day = Day.new(days_params)
   	if day.save
   		redirect_to days_path

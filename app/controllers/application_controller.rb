@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include PitchesHelper
-  before_action :require_login
   protect_from_forgery with: :exception
   helper_method :logged_in?, :current_user, :admin?
 
@@ -28,4 +27,5 @@ class ApplicationController < ActionController::Base
       redirect_to "/"
     end
   end
+
 end
