@@ -1,5 +1,12 @@
 <li class="proj">
-  <%= pitch.title %><br>
-  - <%= pitch.blurb %> -<br>
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title"><%= pitch.title %></span>
+      <p><%= pitch.blurb %></p>
+      <br>
+      <span class="right">Tech Stack:  <%= pitch.tech_stack %></span>
+      <span class="left">Author:  <%= pitch.author.first_name %> <%= pitch.author.last_name %></span>
+    </div>
+  </div>
 </li>
 
