@@ -19,16 +19,18 @@ $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
 
-//.proj {
-//  display: inline-block;
-//  min-width: 200px;
-//  max-width: 300px;
-//  margin: 25px auto;
-//  margin-right: 20px;
-//  position: relative;
-//  border: 2px solid black;
-//}
-//
-//a.image {
-//  display: block;
-//}
+.nav-wrapper {
+  background-color: #2D425C;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+.btn {
+  background-color: #117880;
+}
+
+.card {
+  background-color: #F5F5F5;
+}
