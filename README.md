@@ -12,7 +12,7 @@ Pitch Perfect aims to create an easy and fluid process for Phase 3 DBC students 
 The application will allow for all users to view open and closed pitch days. This allows students to view past pitch selections and their corresponding blurbs to help them gather a better idea at what an example final project might contain.
 
 # Getting Started
-[insert final deployed heroku site here]*************
+https://pitch-perfect-mack.herokuapp.com/
 
 # Example
 To view this application and to have a first hand experience using this (pitch) PERFECT application, please visit the site above and sign up!
