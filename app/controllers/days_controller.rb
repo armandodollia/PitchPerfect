@@ -29,11 +29,14 @@ class DaysController < ApplicationController
 
   def update
   	day = Day.find_by(id: params[:id])
-  
+
   	day.round_status = advance_to_next_round(day)
   	day.save
-
-  	redirect_to days_path
+    if day.round_status == 'closed'
+      redirect_to '/teams/new'
+    else
+      redirect_to days_path
+    end
   end
 
   private
