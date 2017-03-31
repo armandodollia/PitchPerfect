@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
 
   resources :days, only: [:index, :show, :create, :new, :update] do
+    resources :votes, only: [:create]
     resources :pitches, only: [:create]
   end
-  resources :pitches, only: [:create] do
-    resources :votes
+
+  resources :pitches, only: [:create, :new] do
+    resources :votes, only: [:create]
   end
 
   resources :admins, only: [:new, :create]
