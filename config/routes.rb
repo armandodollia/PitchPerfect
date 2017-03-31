@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :sessions, only: [:create, :destroy]
 
-  resources :days, only: [:index, :show, :create, :new, :edit, :update] do
+  resources :days, only: [:index, :show, :create, :new, :update] do
     resources :pitches, only: [:create]
   end
   resources :pitches, only: [:create] do
     resources :votes
   end
-  # TODO restrict path once I get everything working
-  resources :admins
+
+  resources :admins, only: [:new, :create]
 end
