@@ -37,5 +37,12 @@ class ApplicationController < ActionController::Base
       redirect_to "/"
     end
   end
+  
+  def require_admin
+    unless admin?
+      flash[:error] = "You must be an administrator in to access this section"
+      redirect_to "/"
+    end
+  end
 
 end
