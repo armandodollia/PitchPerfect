@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @users = User.all
+    @pitches = Pitch.all
   end
 
   def create
