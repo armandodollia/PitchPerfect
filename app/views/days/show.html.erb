@@ -84,15 +84,18 @@
             <% end %>
           </ul>
       <% end %>
-    <div class="row">
-      <div class="center-align">
-        <a class="waves-effect waves-light btn-large center" id="show_pitch_form_button">Make a Pitch</a>
+
+    <% if @day.round_status == 'open' %>
+      <div class="row">
+        <div class="center-align">
+          <a class="waves-effect waves-light btn-large center" id="show_pitch_form_button">Make a Pitch</a>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="center-align">
-        <%= render partial: '/pitches/add_pitch', locals: {day: @day, pitch: @pitch} %>
+      <div class="row">
+        <div class="center-align">
+            <%= render partial: '/pitches/add_pitch', locals: {day: @day, pitch: @pitch} %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
