@@ -19,6 +19,16 @@ class ApplicationController < ActionController::Base
     return current_user.is_admin if current_user
   end
 
+  def advance_to_next_round(day)
+    if day.round_status == "open"
+      return "round_1"
+    elsif day.round_status == "round_1"
+      return "round_2"
+    elsif day.round_status == "round_2"
+      return "closed"
+    end
+  end
+
   private
 
   def require_login

@@ -1,15 +1,28 @@
 <h1>Past to Present Pitch Days</h1>
 <% if admin? %>
-	<%= link_to "Add a new day", new_day_path %>
+	<%= link_to "Add a new day", new_day_path, class: "waves-effect waves-teal btn-flat" %>
 <% end %>
 
-<ul>
-  <% @days.each do |day| %>
-    <li class="proj">
-      <span><%= day.cohort_name %></span><br>
-      <span><%= day.date %></span><br>
-      <span><%= day.round_status %></span><br>
-      <%= link_to image_tag(day.pic_url), day_path(day) %>
-    </li>
-  <% end %>
-</ul>
+<% @days.each do |day| %>
+    <div class="row proj">
+      <div class="col s12">
+        <div class="col s8 offset-s2">
+          <div class="card medium">
+            <div class="card-image">
+              <img src="<%=	day.pic_url %>">
+              <span class="card-title"><%= day.cohort_name %></span>
+            </div>
+            <div class="card-content">
+              <p>
+                <span><%= day.date %></span><br>
+                <span><%= day.round_status %></span>
+              </p>
+            </div>
+            <div class="card-action">
+              <%= link_to 'Go to Day', day_path(day) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
