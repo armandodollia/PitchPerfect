@@ -15,13 +15,14 @@
         <div class="nav-wrapper">
           <%= link_to 'PitchPerfect', root_path, class: 'brand-logo' %>
           <ul id="nav-mobile" class="right">
-            <li><%= link_to 'home', root_path %></li>
             <% if logged_in? %>
+            <li><%= link_to 'home', days_path %></li>
               <li><%= link_to 'logout', session_path(current_user), method: :delete %></li>
                 <% if admin? %>
                   <li><%= link_to 'add admin', new_admin_path %></li>
                 <% end %>
             <% else %>
+              <li><%= link_to 'home', root_path %></li>
               <li><%= link_to 'login', root_path %></li>
               <li><%= link_to 'register', root_path %></li>
             <% end %>

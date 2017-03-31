@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   include PitchesHelper
   protect_from_forgery with: :exception
-
   helper_method :logged_in?, :current_user, :admin?
 
   def current_day(day_id)
@@ -17,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    return current_user.is_admin if current_user 
+    return current_user.is_admin if current_user
   end
 
   def advance_to_next_round(day)
@@ -27,7 +26,16 @@ class ApplicationController < ActionController::Base
       return "round_2"
     elsif day.round_status == "round_2"
       return "closed"
-    end 
+    end
+  end
+
+  private
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to "/"
+    end
   end
 
 end
