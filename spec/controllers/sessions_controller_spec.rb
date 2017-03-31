@@ -5,7 +5,7 @@ describe SessionsController do
     let!(:user) {User.create!(first_name: "Mike", last_name: "Bonetti", email: "test@email.com", password: "password")}
     it "redirects to 'days#index' if vailid login" do
       post :create, {params: {session: {email: "test@email.com", password: "password"}}}
-      expect(response).to redirect_to '/days#index'
+      expect(response).to redirect_to '/days'
     end
 
     it "sets the session id if succesful login" do

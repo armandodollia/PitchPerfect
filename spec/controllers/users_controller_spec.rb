@@ -20,7 +20,7 @@ describe UsersController do
 
       it "redirects to days#index after registering new user" do
         post :create, {user: {first_name: "Mike", last_name: "Bonetti", email: "testy@email.com", password: "password"}}
-        expect(response).to redirect_to '/days#index'
+        expect(response).to redirect_to '/days'
       end
     end
   end
