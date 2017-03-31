@@ -14,7 +14,7 @@ describe AdminsController do
 			expect{post :create, { admin: {first_name: "Mike", last_name: "Bonetti", email: "testy@email.com", password: "password"} }}.to change{User.all.length}.by(1)
 		end
 
-		it "redirects to days#index after registering new user" do
+		it "redirects to days after registering new user" do
 			post :create, {admin: {first_name: "Mike", last_name: "Bonetti", email: "testy@email.com", password: "password"}}
 			expect(response).to redirect_to '/days#index'
 		end

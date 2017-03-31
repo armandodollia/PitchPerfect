@@ -10,6 +10,7 @@ class DaysController < ApplicationController
   end
 
   def show
+    @users = User.all
     @pitch = Pitch.new()
     @day = Day.find_by(id: params[:id])
     @pitches = Pitch.all.where(day_id: @day.id)
@@ -29,11 +30,18 @@ class DaysController < ApplicationController
 
   def update
   	day = Day.find_by(id: params[:id])
-  
+
   	day.round_status = advance_to_next_round(day)
   	day.save
-
-  	redirect_to days_path
+    if day.round_status == 'closed'
+      @users = User.all
+      p "---------------------------------------------"
+      p @users
+      @pitches = day.pitches
+      render teams_new_path
+    else
+      redirect_to days_path
+    end
   end
 
   private

@@ -21,6 +21,7 @@ $secondary-color: color("yellow", "base") !default;
 
 .nav-wrapper {
   background-color: #2D425C;
+  padding-left: 10px;
 }
 
 body {
@@ -35,6 +36,16 @@ body {
   background-color: #F5F5F5;
 }
 
-.nav-wrapper {
-  padding-left: 10px;
+
+#students {
+  height: 900px;
+}
+
+#pitches {
+ height: 900px;
+}
+
+.target {
+  background-color:white;
+  border:1px solid black;
 }
