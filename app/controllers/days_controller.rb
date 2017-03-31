@@ -22,7 +22,15 @@ class DaysController < ApplicationController
   		@errors = day.errors.full_messages
   		render new_day_path
   	end
+  end
 
+  def update
+  	day = Day.find_by(id: params[:id])
+  	
+  	day.round_status = advance_to_next_round(day)
+  	day.save
+
+  	redirect_to days_path
   end
 
   private

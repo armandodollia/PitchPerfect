@@ -1,10 +1,8 @@
-<% if admin? %>
+<% if admin? && @day.round_status != "closed" %>
+<!-- url: "/days/#{@day.id}/edit" -->
   <p>Change  Day Status Round Status</p>
-  <%= form_for :day, url: "/days/#{@day.id}/edit"  do |f|%>
-    <%= f.text_field :round_status %>
-    <%= f.label :round_status %>
-
-    <%= f.submit "Update Day round" %>
+  <%= form_for :day, url: day_path(@day.id), method: :patch do |f|%>
+    <%= f.submit "Advance to next round" %>
   <% end %>
 <% end %>
 
