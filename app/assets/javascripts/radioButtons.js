@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function () {
   $('.pitch-list').on('click', "input[type=radio]", function() {
     var el = $(this);
     var col = el.data("col");

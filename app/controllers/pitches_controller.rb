@@ -9,9 +9,9 @@ class PitchesController < ApplicationController
     respond_to do |format|
       if @pitch.save
         format.html { redirect_to "/days/#{params[:day_id]}"  }
-        format.js { render :layout => false }
+        format.js { render layout: false }
       else
-        format.js { render :layout => false }
+        format.js { render layout: false }
       end
     end
   end

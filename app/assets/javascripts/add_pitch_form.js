@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).on('turbolinks:load', function () {
   $('#show_pitch_form_button').on('click', function (event) {
     event.preventDefault();
     $('#add_pitch_form_container').removeClass('hide');
@@ -7,7 +7,7 @@ $(document).ready(function () {
   });
 
   $('#new_pitch').on('submit', '.btn', function (event) {
-    var $form = $(this)
+    var $form = $(this);
     event.preventDefault();
       $.ajax({
         url: $form.attr('action'),
